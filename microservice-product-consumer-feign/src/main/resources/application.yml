@@ -1,0 +1,20 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: microservice-product-comsumer #这个很重要，这在以后的服务与服务之间相互调用一般都是根据这个 name
+
+eureka:
+  client:
+    register-with-eureka: false # 服务消费方不注册到注册中心
+    fetch-registry: true
+    service-url: # 注册到哪一个Eureka Server服务注册中心，多个中间用逗号分隔
+      defaultZone: http://eureka6002.com:6002/eureka,http://eureka6001.com:6001/eureka
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true # 访问路径显示ip地址
+
+feign:
+  hystrix:
+    enabled: true # 开启熔断 feign是自带熔断的 配置开启即可

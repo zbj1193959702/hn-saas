@@ -1,0 +1,9 @@
+# bootstrap 应用级别的配置文件
+
+spring:
+  cloud:
+    config:
+      name: microservice-config-eureka #github上的配置名称，注意没有yml后缀名
+      profile: prod # profile
+      label: master  # 分支
+      uri: http://localhost:5001 #Config配置中心地址，通过它获取microservice-config-application.yml配置信息

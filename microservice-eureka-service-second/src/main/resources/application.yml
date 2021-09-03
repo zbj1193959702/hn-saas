@@ -1,0 +1,13 @@
+server:
+  port: 6002
+
+eureka:
+  instance:
+    hostname: eureka6002.com  # eureka服务端的实例名称
+  client:
+    register-with-eureka: false # 不注册到自己
+    fetch-registry: false # 不从注册中心获取服务
+    service-url: # Eureka客户端与Eureka服务端的交互地址，集群版配置对方的地址，单机版配置自 己（如果不配置则默认本机8761端口）
+      defaultZone: http://eureka6001.com:6001/eureka/
+  server:
+    enable-self-preservation: false # 开发阶段可以设置为false 即没有心跳便移除
